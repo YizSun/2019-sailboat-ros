@@ -1,0 +1,39 @@
+手动设置自己电脑的ipv4地址：192.168.1.2
+子网掩码：255.255.255.0
+网关：192.168.1.1
+
+###### login ######
+ssh sjtu151@192.168.1.51 
+password:sjtu
+
+###### launch ######
+启动船上程序(打开terminal1)
+cd sailboat-ws/src/Sailboat-Ros/Sh/onboat
+./start_launch_onboat_driver.sh
+./start_launch_onboat.sh
+
+#启动岸上程序(打开terminal2)
+source ~/sailboat_ws/devel/setup.bash
+cd ~/sailboat_ws/src/Sailboat-Ros/Sh/onshore
+./start_launch_onshore.sh
+重新从这里面打开终端，并且输入rosrun spare_function example3.py 
+然后再打开终端输入rqt
+## check remote controller ##
+rostopic echo /arduino
+^C
+## check ahrs ##
+rostopic echo /ahrs
+^C
+## check weather station ##
+rostopic echo /wtst
+^C
+
+###### record data ######使用rosbag抓取话题的信息并且打包一个文件放置到指定文件夹内（P82）
+cd
+rosbag record -a
+^C
+## record data in back stage ##
+nohup rosbag record -a &
+## check record name ##
+ls
+ll

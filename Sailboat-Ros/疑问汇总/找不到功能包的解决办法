@@ -1,0 +1,29 @@
+如果在创建ROS工作空间时不是严格按照
+
+$ mkdir -p ~/catkin_ws/src
+
+来创建的话可能后面会出现找不到包的情况，这个时候你用命令
+
+
+$ echo $ROS_PACKAGE_PATH
+
+
+会发现所找不到的包没有包含在这个路径里面，这个时候你可以人为地去添加路径到ROS_PAKAGE_PATH路径中
+
+
+方法如下：
+
+1、打开终端脚本～/.bashrc文件：$sudo gedit ~/.bashrc
+
+
+2、在文件末尾添加
+export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/YOUR WORKSPACE/src
+
+export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/simulation/src
+
+
+3、新打开一个终端，然后执行
+
+$ echo $ROS_PACKAGE_PATH
+
+你就会发现工作空间路径已经加入到ROS_PACKAGE_PATH中了。

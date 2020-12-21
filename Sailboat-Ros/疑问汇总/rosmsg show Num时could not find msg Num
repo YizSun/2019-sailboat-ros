@@ -1,0 +1,5 @@
+解决方法：在终端输入
+
+export ROS_PACKAGE_PATH=~/catkin_ws/src/tutorials:$ROS_PACKAGE_PATH 
+
+其中~/catkin_ws/src/tutorials是你创建的功能包的路径
